@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - WorkspaceW</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #c4c4c4; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+        }
+        header {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100; /* Ensures header is above other content */
+        }
+        .logo {
+            height: 50px; /* Adjust height as needed */
+            width: auto; /* Maintain aspect ratio */
+            margin-right: 10px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .header-title {
+            color: #fff;
+            font-size: 20px; /* Adjust font size as needed */
+            font-weight: bold;
+        }
+        .search-bar { 
+            padding: 10px 30px 10px 10px; /* Adjust padding for better spacing */
+            border: 0.5px solid #ccc; 
+            border-radius: 5px; 
+            width: 200px; 
+            margin-left: 800px; /* Adjusted to 10px from the left */
+            position: relative; /* Ensure relative positioning for the icon */
+        }
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 25px; /* Adjust right position as needed */
+            transform: translateY(-50%);
+            color: #666; /* Adjust icon color */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .search-icon:hover {
+            border: #666;
+            color: #ffffff; /* Darken icon color on hover */
+        }
+        nav { 
+            background-color: #333; 
+            width: 200px; 
+            height: 100vh; 
+            padding: 20px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            position: fixed; 
+            top: 60px; /* Adjust top position for spacing */
+            left:0; 
+            z-index: 100; /* Ensures menu is below header */
+        }
+        nav a { 
+            color: white; 
+            margin: 15px 0;
+            text-decoration: solid; 
+            font-weight: bold; 
+            width: 100%; 
+            text-align: center; 
+            padding: 10px 0; 
+            display: flex; /* Align icon and text horizontally */
+            align-items: center; /* Center vertically */
+            border: 2px solid transparent; /* Initial border, invisible */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        nav a:hover, nav a:focus, nav a.selected { 
+            text-decoration: none; 
+            border: 2px solid white; /* Visible border on hover/focus */
+            background-color: rgba(255, 255, 255, 0.2); /* Background color change */
+        }
+        nav a.selected { 
+            border: 2px solid #000; /* Colored border when selected */
+        }
+        nav a i { 
+            margin-right: 10px; 
+            font-size: 20px; /* Adjust icon size */
+        }
+        .content { 
+            margin-top: 100px; /* Adjust margin to accommodate header height */
+            padding: 20px; 
+            margin-left: 220px; /* Make space for the fixed sidebar */
+            width: calc(100% - 220px); /* Adjust width to account for sidebar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Ensure items stack vertically */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid columns for responsive layout */
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px; /* Adjust max-width as needed */
+        }
+        .grid-item {
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .grid-item h2 {
+            margin-top: 0;
+            color: #666;
+        }
+        .grid-item p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        button { 
+            margin-top: 20px;
+            padding: 10px 20px; 
+            border: none; 
+            background-color: #333; 
+            color: white; 
+            border-radius: 5px; 
+            cursor: zoom-in; 
+        }
+        button:hover { 
+            background-color: #555; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/564x/09/6e/c8/096ec8419a24003ff43f113712eb99e8.jpg" alt="Dynamic Logo" class="logo">
+        <span class="header-title">Dynamic Workspace</span>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search here...">
+            <i class="fa fa-search search-icon" onclick="performSearch()"></i>
+        </div>
+    </header>
+    <nav>
+        <a href="home.html"><i class="fa fa-home"></i>Home</a>
+        <a href="customers.html"><i class="fa fa-users"></i>Customers</a>
+        <a href="departments.html"><i class="fa fa-building"></i>Departments</a>
+        <a href="media.html" class="selected"><i class="fa fa-picture-o"></i>Media</a>
+        <a href="myaccount.html"><i class="fa fa-user-circle"></i>My Account</a>
+    </nav>
+    <div class="content">
+        <div class="grid-container">
+            <div class="media-item">
+                <img src="https://img.freepik.com/premium-photo/3d-cartoon-business-character_839035-117890.jpg" height="250px" alt="person img">
+            </div>
+            <div class="media-item">
+                <img src="https://img.freepik.com/premium-photo/digital-nomadoffice_912673-771.jpg" height="250px" alt="img">
+            </div>
+            <div class="media-item">
+                <img src="https://img.freepik.com/premium-photo/3d-illustration-cartoon-barista-with-cup-coffee_1057-43186.jpg" height="250px"alt="img">
+            </div>
+        </div> <br>
+        <div class="grid-container">
+            <div class="media-item">
+                <img src="https://img.freepik.com/premium-photo/cartoon-man-smiling_81048-33432.jpg?w=360" height="250px" alt="person img">
+            </div>
+            <div class="media-item">
+                <img src="https://img.freepik.com/free-photo/beautiful-girl-with-laptop-coffee-cup-3d-rendering_1057-44874.jpg" height="250px"alt="img">
+            </div>
+            <div class="media-item">
+                <img src="https://img.freepik.com/premium-photo/3d-illustration-cute-cartoon-girl-with-backpack_1057-41143.jpg" height="250px"alt="img">
+            </div>
+        </div>
+    </div>
+    <script>
+        function performSearch() {
+            var query = document.getElementById('searchInput').value;
+            alert('Searching for: ' + query);
+        }
+    </script>
+</body>
+</html>
