@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Workspace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/564x/09/6e/c8/096ec8419a24003ff43f113712eb99e8.jpg" alt="Dynamic Logo" class="logo">
+        <span class="header-title">Dynamic Workspace</span>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search here...">
+            <i class="fa fa-search search-icon" onclick="performSearch()"></i>
+        </div>
+    </header>
+    <nav>
+        <a href="home.html"><i class="fa fa-home"></i>Home</a>
+        <a href="customers.html" class="selected"><i class="fa fa-users"></i>Customers</a>
+        <a href="departments.html"><i class="fa fa-building"></i>Departments</a>
+        <a href="media.html"><i class="fa fa-picture-o"></i>Media</a>
+        <a href="myaccount.html"><i class="fa fa-user-circle"></i>My Account</a>
+    </nav>
+    <div class="content">
+        <table>
+            <caption style="text-align: left;"><b><u>CUSTOMERS <br><br></u></b></caption>
+            <tr>
+                <th>Customer Id</th>
+                <th>Department Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Total Media Size</th>
+            </tr>
+            <tr>
+                <td>1234</td>
+                <td>CS001</td>
+                <td>Vishal</td>
+                <td>vishal@gmail.com</td>
+                <td>2GB</td>
+            </tr>
+            <tr>
+                <td>1001</td>
+                <td>CS021</td>
+                <td>Kusum</td>
+                <td>kusum@gmail.com</td>
+                <td>5GB</td>
+            </tr>
+            <tr>
+                <td>1014</td>
+                <td>CT054</td>
+                <td>Pusp</td>
+                <td>pusp@gmail.com</td>
+                <td>1.5GB</td>
+            </tr>
+            <tr>
+                <td>1006</td>
+                <td>CS007</td>
+                <td>Hemant</td>
+                <td>hemant@gmail.com</td>
+                <td>6GB</td>
+            </tr>
+            <tr>
+                <td>1032</td>
+                <td>GT011</td>
+                <td>Puja</td>
+                <td>puja@gmail.com</td>
+                <td>50GB</td>
+            </tr>
+            <tr>
+                <td>5054</td>
+                <td>CT094</td>
+                <td>Prakash</td>
+                <td>prakash@gmail.com</td>
+                <td>100GB</td>
+            </tr>
+            <tr>
+                <td>7076</td>
+                <td>GT072</td>
+                <td>Ranjeeta</td>
+                <td>ranjeeta@gmail.com</td>
+                <td>60GB</td>
+            </tr>
+        </table>
+        <br><br>
+        <div class="pagination">
+            <button onclick="prevPage()">Previous</button>
+            <span><span id="currentPage">1</span></span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        function performSearch() {
+            var searchInput = document.getElementById('searchInput').value;
+            console.log('Searching for: ' + searchInput);
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(navLink => {
+                    navLink.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+
+        let currentPage = 1;
+            function prevPage() {
+                if (currentPage > 1) {
+                currentPage--;
+                updatePageNumber();
+             }
+        }
+        function nextPage() {
+            currentPage++;
+            updatePageNumber();
+        }
+        function updatePageNumber() {
+            document.getElementById('currentPage').innerText = currentPage;
+        }
+    </script>
+</body>
+</html>
